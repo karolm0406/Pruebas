@@ -1,0 +1,76 @@
+<container class="p-4">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card text-center" style="border-radius: 12px; background-color: #e6f7ff;">
+                <div class="card-header" style="background-color: #007bb5; color: white; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                    <h3 class="text-uppercase">EDITAR UN KDRAMA</h3>
+                </div>
+                <div class="card-body"
+                {{#if error}}
+<div class="alert alert-danger" style="border-radius: 8px;">
+    {{error}}
+</div>
+{{/if}}
+>
+                    <!-- Asegúrate de que el action esté apuntando al POST con el ID correcto -->
+                    <form action="/edit/{{kdrama.id}}" method="post">
+                        <!-- Título -->
+                        <div class="input-group mt-2">
+                            <label class="input-group-text" style="background-color: #cce6ff; color: #005f8a;">Título</label>
+                            <input class="form-control" type="text" name="titulo" value="{{kdrama.titulo}}" placeholder="Ejemplo: True Beauty" required maxlength="300" autofocus style="border: 1px solid #007bb5;">
+                        </div>
+
+                        <!-- Año -->
+                        <div class="input-group mt-2">
+                            <label class="input-group-text" style="background-color: #cce6ff; color: #005f8a;">Año</label>
+                            <input class="form-control" type="number" name="anio" value="{{kdrama.anio}}" placeholder="Ejemplo: 2020" required min="1970" max="2025" style="border: 1px solid #007bb5;">
+                        </div>
+
+                        <!-- Género -->
+                        <div class="input-group mt-2">
+                            <label class="input-group-text" style="background-color: #cce6ff; color: #005f8a;">Género</label>
+                            <input class="form-control" type="text" name="genero" value="{{kdrama.genero}}" placeholder="Ejemplo: Romance, Comedia" required maxlength="300" style="border: 1px solid #007bb5;">
+                        </div>
+
+                        <!-- Episodios -->
+                        <div class="input-group mt-2">
+                            <label class="input-group-text" style="background-color: #cce6ff; color: #005f8a;">Episodios</label>
+                            <input class="form-control" type="number" name="episodios" value="{{kdrama.episodios}}" placeholder="Ejemplo: 16" required style="border: 1px solid #007bb5;">
+                        </div>
+
+                        <!-- Transmisión -->
+                        <div class="input-group mt-2">
+                            <label class="input-group-text" style="background-color: #cce6ff; color: #005f8a;">Transmisión</label>
+                            <input class="form-control" type="text" name="transmision" value="{{kdrama.transmision}}" placeholder="Ejemplo: tvN, Netflix" required maxlength="300" style="border: 1px solid #007bb5;">
+                        </div>
+
+                        <!-- Protagonistas -->
+                        <div class="input-group mt-2">
+                            <label class="input-group-text" style="background-color: #cce6ff; color: #005f8a;">Protagonistas</label>
+                            <textarea class="form-control" name="protagonistas" rows="2" placeholder="Ejemplo: Moon Ga-young, Cha Eun-woo" required maxlength="300" style="border: 1px solid #007bb5;">{{kdrama.protagonistas}}</textarea>
+                        </div>
+
+                        <!-- Sinopsis -->
+                        <div class="input-group mt-2">
+                            <label class="input-group-text" style="background-color: #cce6ff; color: #005f8a;">Sinopsis</label>
+                            <textarea class="form-control" name="sinopsis" rows="3" placeholder="Escribe una breve sinopsis..." required maxlength="300" style="border: 1px solid #007bb5;">{{kdrama.sinopsis}}</textarea>
+                        </div>
+
+
+                        <!-- Calificación -->
+                        <div class="input-group mt-2">
+                            <label class="input-group-text" style="background-color: #cce6ff; color: #005f8a;">Calificación</label>
+                            <input class="form-control" type="number" step="0.1" min="0" max="10" name="calificacion" value="{{kdrama.calificacion}}" placeholder="Ejemplo: 8.5" required style="border: 1px solid #007bb5;">
+                        </div>
+
+                        <!-- Botón de envío -->
+                        <div class="form-group d-grid gap-2 mt-3">
+                            <button type="submit" class="btn" style="background-color: #007bb5; color: white; border-radius: 8px;">Guardar KDrama</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</container>
+

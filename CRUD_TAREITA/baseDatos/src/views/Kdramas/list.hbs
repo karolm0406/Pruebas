@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="row mt-5">
+        <h3 class="text-center text-uppercase" style="color: #053850;">LISTA DE KDRAMAS</h3>
+
+        {{#if kdramas}}
+        <div class="col-md-12">
+            <table class="table table-bordered text-center table-hover rounded-3" style="border: 1px solid #007bb5;">
+                <thead style="background-color: #007bb5; color: white;">
+                    <tr>
+                        <th>ID</th>
+                        <th>Título</th>
+                        <th>Año</th>
+                        <th>Género</th>
+                        <th>Episodios</th>
+                        <th>Transmisión</th>
+                        <th>Protagonistas</th>
+                        <th>Sinopsis</th>
+                        <th>Calificación</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each kdramas}}
+                        <tr class="align-middle">
+                            <td>{{id}}</td>
+                            <td>{{titulo}}</td>
+                            <td>{{anio}}</td>
+                            <td>{{genero}}</td>
+                            <td>{{episodios}}</td>
+                            <td>{{transmision}}</td>
+                            <td>{{protagonistas}}</td>
+                            <td>{{sinopsis}}</td>
+                            <td>{{calificacion}}</td>
+                            <td>
+    <div class="btn-group">
+        <a href="/edit/{{id}}" class="btn btn-warning rounded-pill p-2"><i class="fa-solid fa-pencil"></i></a>
+        <a href="javascript:void(0);" class="btn btn-danger rounded-pill p-2" onclick="confirmDelete({{id}})"><i class="fa-solid fa-trash"></i></a>
+    </div>
+</td>
+
+<script>
+    function confirmDelete(id) {
+        const confirmation = confirm("¿Estás seguro de que deseas eliminar este Kdrama?");
+        if (confirmation) {
+            window.location.href = `/delete/${id}`;
+        }
+    }
+</script>
+
+                        </tr>
+                    {{/each}}
+                </tbody>
+                <tfoot style="background-color: #007bb5; color: white;">
+                    <tr>
+                        <td colspan="10" class="text-center" style="padding: 10px; font-weight: bold;">Registro de K-Dramas</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        {{else}}
+            <div class="card text-center mx-auto" style="width: 350px; border-radius: 12px; background-color: #f0f8ff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                <div class="card-header" style="background-color: #007bb5; color: white; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                    <h3>Debes agregar un nuevo Kdrama</h3>
+                </div>
+                <div class="card-body">
+                    <p>Presiona este botón para registrar un nuevo Kdrama en la aplicación</p>
+                    <a href="/add" class="btn btn-primary rounded-pill" style="padding: 10px 20px;">Ir a crear</a>
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</div>
+
+<style>
+    /* Estilos para las filas alternadas de la tabla */
+    tbody tr:nth-child(odd) {
+        background-color: #a5d5fa; /* Gris claro para filas impares */
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #aacdfa; /* Blanco para filas pares */
+    }
+</style>
+
+
+

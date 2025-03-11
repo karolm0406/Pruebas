@@ -1,0 +1,42 @@
+<main class="mt-5">
+    <div class="container">
+        <div class="card mx-auto" style="width: 500px; border-radius: 12px; background-color: #f0f8ff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <div class="card-header" style="background-color: #007bb5; color: white; border-top-left-radius: 12px; border-top-right-radius: 12px;">
+                <img class="card-img-top mx-auto m-3 rounded-circle" src="/img/logo2.jpg" alt="logo" style="width: 180px; height:180px; display:block; border: 4px solid #ffffff;">
+                <h3 class="text-uppercase text-center p-4">Crud_Tarea_Alma</h3>
+            </div>
+            <div class="card-body text-center">
+                <!-- Formulario de búsqueda -->
+                <form action="/search" method="get" class="mt-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar Kdrama por título..." name="titulo" required style="border: 1px solid #007bb5; border-radius: 8px;">
+                        <button class="btn btn-primary" type="submit" style="background-color: #007bb5; border: none; border-radius: 8px;">Buscar</button>
+                    </div>
+                </form>
+
+                <!-- Mostrar resultados de la búsqueda -->
+                {{#if kdrama}}
+                    <div class="mt-4">
+                        <h4 style="color: #007bb5;">Resultados de la búsqueda:</h4>
+                        <ul class="list-unstyled">
+                            <li><strong>Título:</strong> {{kdrama.titulo}}</li>
+                            <li><strong>Año:</strong> {{kdrama.anio}}</li>
+                            <li><strong>Género:</strong> {{kdrama.genero}}</li>
+                            <li><strong>Episodios:</strong> {{kdrama.episodios}}</li>
+                            <li><strong>Transmisión:</strong> {{kdrama.transmision}}</li>
+                            <li><strong>Protagonistas:</strong> {{kdrama.protagonistas}}</li>
+                            <li><strong>Sinopsis:</strong> {{kdrama.sinopsis}}</li>
+                            <li><strong>Calificación:</strong> {{kdrama.calificacion}}</li>
+                        </ul>
+                    </div>
+                {{else}}
+                    {{#if searchError}}
+                        <div class="alert alert-danger mt-4" style="border-radius: 8px;">{{searchError}}</div>
+                    {{/if}}
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</main>
+
+
