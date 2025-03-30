@@ -11,11 +11,14 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "express": "^4.21.2",
     "express-handlebars": "^8.0.1",
+    "express-session": "^1.18.1",
     "express-validator": "^7.2.1",
     "morgan": "^1.10.0",
     "mysql2": "^3.13.0",
+    "xss": "^1.0.15",
     "xss-clean": "^0.1.4"
   },
   "devDependencies": {

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <style>
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff; 
+        }
+
+        .login-container {
+            background-color: #a6d4fa;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+             margin-top: 150px; 
+            margin-left: 450px; 
+            text-align: center;
+            position: relative;
+        }
+
+        h2 {
+            color: #1a65af;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        input[type="email"],
+        input[type="password"],
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #1e90ff;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="text"]:focus {
+            border-color: #4682b4;
+            outline: none;
+        }
+
+        button {
+            background-color: #1e90ff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #4682b4;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #0e4072;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <div class="login-container">
+            <h2>Registrarse</h2>
+            {{#if error}}
+                <p class="error">{{error}}</p>
+            {{/if}}
+            <form id="registerForm" action="/register" method="POST">
+                <input type="text" name="username" id="username" placeholder="Nombre de usuario" required>
+                <input type="email" name="email" id="email" placeholder="Correo electrónico" required>
+                <input type="password" name="password" id="password" placeholder="Contraseña" required>
+                <button type="submit">Registrarse</button>
+            </form>
+            <a href="/login">¿Ya tienes cuenta? Inicia sesión</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            var username = document.getElementById('username').value;
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            function isValidInput(input) {
+                var forbiddenChars = /[<>""'()&]/;
+                return !forbiddenChars.test(input);
+            }
+
+            if (!isValidInput(username) || !isValidInput(email)) {
+                alert("El nombre de usuario o correo electrónico contiene caracteres no permitidos.");
+                event.preventDefault();
+                return;
+            }
+
+            if (password.length < 6) {
+                alert("La contraseña debe tener al menos 6 caracteres.");
+                event.preventDefault();
+                return;
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
