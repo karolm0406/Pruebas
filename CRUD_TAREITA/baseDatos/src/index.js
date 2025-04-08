@@ -48,8 +48,13 @@ app.use(kdramasRoutes);
 app.use(express.static(join(__dirname, 'public')));
 
 
-app.listen(app.get('port'), () => 
-    console.log('Servidor escuchando en el puerto', app.get('port'))
-);
+app.listen(app.get('port'), '0.0.0.0', () => {
+    console.log('Servidor escuchando en el puerto', app.get('port'));
+});
+
+
+
+
+
 
 
